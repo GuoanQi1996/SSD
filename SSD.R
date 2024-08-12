@@ -379,6 +379,8 @@ command = matrix(c("tfile","t",1,"character", "plink variant-major additive comp
                    "err","e",2,"numeric","error rate tolerance of the adjustment process, optional, defaulted 0.05",
                    "window","w",2,"numeric","window size(bp)of sliding window analysis for calculate the initial LSP, optional, defaulted 1000000",
                    "step","s",2,"numeric","step size (bp) of sliding window analysis for calculate the initial LSP, optional, defaulted 20000",
+                   "width","wi",2,"numeric","width for the output figure, optional, defaulted 16",
+                   "height","he",2,"numeric","height for the output figure, optional, defaulted 16",
                    "out","o",2,"character","specify prefix of output results, optional, defaulted SSD",
                    "help","h",0,"logical", "parameters input instruction"),
                  byrow=T,ncol=5)
@@ -401,6 +403,8 @@ window = 1000000
 step = 20000
 out = "SSD"
 fraction = 0.8
+width = 16
+height = 16
 
 if (!is.null(args$adj)) {
   adj = args$adj
@@ -417,8 +421,14 @@ if (!is.null(args$step)) {
 if (!is.null(args$out)) {
   out = args$out
 }
+if (!is.null(args$width)) {
+  width = args$width
+}
+if (!is.null(args$height)) {
+  height = args$height
+}
 print_header()
-cat(paste0("Options: \n  --tfile ",tfile," \n  --ap ",ap," \n  --dp ",dp," \n  --adj ",adj," \n  --err ", err," \n  --window ",window," \n  --step ", step," \n  --out ",out,"\n\n"))
+cat(paste0("Options: \n  --tfile ",tfile," \n  --ap ",ap," \n  --dp ",dp," \n  --adj ",adj," \n  --err ", err," \n  --window ",window," \n  --step ", step," \n  --width ", width," \n  --height ", height," \n  --out ",out,"\n\n"))
 
 setwd(".")
 # pre-read file
@@ -531,12 +541,12 @@ for(i in 1:length(IL.list)){
       Intro.summary=rbind(Intro.summary,collapse_introgressRegion)
     }
   }
-  colnames(Intro.dt)[c(4:8)]=c("VARIANT_NUMBER","INITIAL_LSP/DONOR_LSA","NLSA","ADAPTIVE_LSA","UPDATED_LSP/DONOR_LSA")
+  colnames(Intro.dt)[c(4:8)]=c("VARIANT_NUMBER","INITIAL_LSP","NLSA","ADAPTIVE_LSA","UPDATED_LSP")
   outFile1=paste0(out,".",currentSample,".blockwise.intro")
   write.table(Intro.dt,outFile1,quote=F,col.names = T,row.names = F,sep='\t')
   if(nrow(Intro.summary)>0){
     colnames(Intro.summary)[4]="VARIANT_NUMBER"
-    outFile2=paste0(out,".",currentSample,".blockwise.collapse.intro")
+    outFile2=paste0(out,".",currentSample,".merged.intro")
     write.table(Intro.summary,outFile2,quote=F,col.names = T,row.names = F,sep='\t')
   }
 
@@ -561,7 +571,7 @@ for(i in 1:length(IL.list)){
     theme_bw(base_size = 13) +
     theme(strip.background =element_rect(fill="lightgrey"), legend.position = "None") +
     coord_cartesian(ylim = c(0,1))
-  ggsave(paste0(out,'.',currentSample,'.png'), intro_plot, width=16, height=16, device='png')
+  ggsave(paste0(out,'.',currentSample,'.png'), intro_plot, width=width, height=height, device='png')
   
   time2=proc.time()
   time = (time2-time1)[3][[1]]
