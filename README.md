@@ -44,6 +44,20 @@ Rscript SSD.R --tfile example.traw --ap 0_TM-1 --dp 0_3-79 --window 500000 --ste
 # change the size of output figures
 Rscript SSD.R --tfile example.traw --ap 0_TM-1 --dp 0_3-79 --window 500000 --step 20000 --adj 0.5 --err 0.1 --width 8 --height 4 --out example
 ```
+## Parameters
+| Paramater | Description | Defaulted | Type |
+| --- | --- | --- | --- |
+| --tfile | TRAW file contain genotypes of CSSLs and their recurrent/donor parent lines | - | Mandatory | 
+| --ap | ID of recurrent/adaptive parental line (in TRAW's header) | - | Mandatory | 
+| --dp | ID of donor parental line (in TRAW's header) | - | Mandatory | 
+| --adj | Baselevel of adjustment for inferring the parental origin of ambiguous alleles (NLSA), genomic region with LSP lower than 0.8 but higher than the given value would start adjustment process | 0.7 | Optional |
+| --err | Error rate tolerance of the adjustment process | 0.05 | Optional |
+| --window | Window size (bp) of sliding window analysis for calculate the local substitution proportion (LSP) | 1000000 | Optional |
+| --step | Step size (bp) of sliding window analysis for calculate the LSP | 20000 | Optional |
+| --width | Width for the output figure | 16 | Optional |
+| --height | Height for the output figure | 16 | Optional |
+| --out | Prefix for the names of output files | SSD | Optional |
+| --help | Print the help message for SSD uasge | - | - |
 
 ## Output
 | File | Description |
