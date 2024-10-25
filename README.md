@@ -69,7 +69,7 @@ Rscript SSD.R --tfile example.traw --ap 0_TM-1 --dp 0_3-79 --window 500000 --ste
 ## Citation
 If you find this tools useful, please cite
 
-Qi, G., Si, Z., Xuan, L., Han, Z., Hu, Y., Fang, L., Dai, F. and Zhang, T. Unravelling the genetic basis and regulation networks related to fibre quality improvement using chromosome segment substitution lines in cotton. Plant Biotechnology Journal (2024) **22** _pp._ 3135-3150, https://doi.org/10.1111/pbi.14436
+Qi, G., Si, Z., Xuan, L., Han, Z., Hu, Y., Fang, L., Dai, F. and Zhang, T. Unravelling the genetic basis and regulation networks related to fibre quality improvement using chromosome segment substitution lines in cotton. _Plant Biotechnology Journal_ (2024) **22** _pp._ 3135-3150, https://doi.org/10.1111/pbi.14436
 
 ## Issue
 Guo-An Qi (guoan.qi@foxmail.com)
