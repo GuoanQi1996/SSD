@@ -13,14 +13,14 @@ or
 ```bash
 Rscript SSD.R --help
 ```
-The packages `data.table`, `dplyr`, `ggplot2`, `Rcpp` and `stats` are required for the script, `SSD` will automatically detect the dependencies and install an unavailable packages. The users can also install the required packages manually if the network is not connected.
+The packages `data.table`, `dplyr`, `ggplot2`, `Rcpp` and `stats` are required for the script, `SSD` will automatically detect the dependencies and install unavailable packages. The users can also install the required packages manually if the network is not connected.
 
 ## Input
 SSD require variant-major additive component file (TRAW) as the input format, this format can be generated from the standard Variant Call Format (VCF) by [PLINK](https://www.cog-genomics.org/plink/) or [PLINK2](https://www.cog-genomics.org/plink/2.0/). Using the exampled file `example.vcf.gz`, we can get `example.traw` by the following command. 
 ```bash
 # PLINK 1.9
 gzip -d -k example.vcf.gz
-plink --vcf example.vcf.gz --allow-extra-chr --recode A-transpose --out example
+plink --vcf example.vcf --allow-extra-chr --recode A-transpose --out example
 # PLINK 2.0 (recommanded, fast and easy)
 plink2 --vcf example.vcf.gz --allow-extra-chr --export Av --out example
 ```
